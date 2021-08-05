@@ -19,16 +19,14 @@ $router->get('admin', 'App/Controllers/AdminController.php@index', [
     'auth' => WhenNotLoggedin::class,
 ]);
 
+// All the routes concerning users
+
 $router->get('user', 'App/Controllers/UserController.php@index', [
     'show' => Permissions::class
 ]);
 
 $router->get('user/{id}', 'App/Controllers/UserController.php@show', [
     'read' => Permissions::class
-]);
-
-$router->get('user/{id}', 'App/Controllers/UserController.php@show', [
-    'show' => Permissions::class
 ]);
 
 $router->get('user/create', 'App/Controllers/UserController.php@create');
@@ -44,6 +42,31 @@ $router->get('user/{id}/edit', 'App/Controllers/UserController.php@edit', [
 $router->post('user/{id}/update', 'App/Controllers/UserController.php@update', [
     'update' => Permissions::class
 ]);
+
+$router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning educations
+
+// $router->get('education', 'App/Controllers/EducationController.php@index', [
+//     'show' => Permissions::class,
+// ]);
+
+// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
+//     'show' => Permissions::class,
+// ]);
+
+// $router->get('education/create', 'App/Controllers/EducationController.php@create');
+
+// $router->post('education/store', 'App/Controllers/EducationController.php@store', [
+//     'store' => Permissions::class,
+// ]);
+
+// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
+//     'show' => Permissions::class,
+// ]);
+
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');
 
