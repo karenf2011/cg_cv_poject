@@ -1,3 +1,4 @@
+<?php require 'views/partials/header.view.php' ?>
 <div class="overlay">
     <div class="center-box">
         <h2 class="error-message">GEEN TOEGANG ...</h2>

@@ -10,9 +10,8 @@ use App\Models\RoleModel;
 class UserController extends Controller
 {
 
-    /**
-     * Show's a list of users
-     */
+    // Show a list of users
+     
     public function index()
     {
         View::render('users/index.view', [
@@ -20,9 +19,8 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Show a form to create a new user
-     */
+    // Show a form to create a new user
+    
     public function create()
     {
         View::render('users/create.view', [
@@ -32,9 +30,8 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Store a user record into the database
-     */
+    // Store a user record in the database
+     
     public function store()
     {
         // Save post data in $user var
@@ -49,9 +46,8 @@ class UserController extends Controller
         UserModel::load()->store($user);
     }
 
-    /**
-     * Show a form to edit a user record
-     */
+    // Show a form to edit a user record
+     
     public function edit()
     {
         $userId = Helper::getIdFromUrl('user');
@@ -64,40 +60,38 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Updates a user record into the database
-     */
+    // Update a user record in the database
+     
     public function update()
     {
         $userId = Helper::getIdFromUrl('user');
 
         // Save post data in $user
         $user = $_POST;
-
-        // Set updated_by and updated fields
-        $user['updated_by'] = Helper::getUserIdFromSession();
-        $user['updated'] = date('Y-m-d H:i:s');
-        // dd($user);
+        
         // Save record to database
         UserModel::load()->update($user, $userId);
+        View::redirect('user/' . $userId);
     }
 
-    /**
-     * Show user record
-     */
+    //  Show user record
+     
     public function show()
     {
         $userId = Helper::getIdFromUrl('user');
         
-        $user = UserModel::load()->get($userId);
+        View::render('users/show.view', [
+            'user'   => UserModel::load()->get($userId),
+        ]);
+        
     }
 
-    /**
-     * Archive a user record into the database (soft delete)
-     */
+    //  Archive a user record into the database (soft delete)
+    
     public function destroy()
     {
-
+        $userId = Helper::getIdFromUrl('user');
+        Usermodel::load()->destroy($userId);
     }
 
 }
