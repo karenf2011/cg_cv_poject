@@ -10,7 +10,6 @@ use App\Models\UserModel;
 class EducationController extends Controller
 {
     // Show a list of educations for the selected user
-
     public function index()
     {
         $userId = Helper::getUserIdFromSession('user');       
@@ -22,7 +21,6 @@ class EducationController extends Controller
     }
 
     // Show education record
-
     public function show()
     {
         $educationId = Helper::getIdFromUrl('educations');
@@ -33,7 +31,6 @@ class EducationController extends Controller
     }
 
     // Show a form to add educations
-
     public function create()
     {
         View::render('educations/create.view', [
@@ -43,7 +40,6 @@ class EducationController extends Controller
     }
 
     // Store an education record in the database
-
     public function store ()
     {
         // Saves post data in education var
@@ -65,7 +61,6 @@ class EducationController extends Controller
     }
 
     // Show a form to edit an education record
-
     public function edit()
     {
         $educationId = Helper::getIdFromUrl('educations');
@@ -78,7 +73,6 @@ class EducationController extends Controller
     }
 
     // Update an education record
-
     public function update()
     {
         $educationId = Helper::getIdFromUrl('educations');
@@ -98,7 +92,6 @@ class EducationController extends Controller
     }
 
     // Archive an education record into the database (soft delete)
-
     public function destroy()
     {
         $educationId = Helper::getIdFromUrl('educations');

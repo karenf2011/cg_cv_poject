@@ -103,6 +103,62 @@ $router->get('jobs/{id}/destroy', 'App/Controllers/JobController.php@destroy', [
     'delete' => Permissions::class
 ]);
 
+// All the routes concerning skills
+
+$router->get('skills', 'App/Controllers/SkillController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('skills/{id}', 'App/Controllers/SkillController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('skills/create', 'App/Controllers/SkillController.php@create');
+
+$router->post('skills/store', 'App/Controllers/SkillController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('skills/{id}/edit', 'App/Controllers/SkillController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('skills/{id}/update', 'App/Controllers/SkillController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('skills/{id}/destroy', 'App/Controllers/SkillController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning hobbies
+
+$router->get('hobbies', 'App/Controllers/HobbyController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('hobbies/{id}', 'App/Controllers/HobbyController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('hobbies/create', 'App/Controllers/HobbyController.php@create');
+
+$router->post('hobbies/store', 'App/Controllers/HobbyController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('hobbies/{id}/edit', 'App/Controllers/HobbyController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('hobbies/{id}/update', 'App/Controllers/HobbyController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('hobbies/{id}/destroy', 'App/Controllers/HobbyController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');
 
