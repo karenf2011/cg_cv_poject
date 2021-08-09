@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Libraries\MySql;
 use App\Models\Model;
+use PDO;
 
 class EducationModel extends Model
 {
@@ -36,5 +38,16 @@ class EducationModel extends Model
             $this->limit, 
             $this->protectedFields
         );   
+    }
+
+    public function userEducations(int $userId)
+    {
+        if (empty($userId)) {
+            return false;
+        }
+        $model = $this->model;
+        $sql = "SELECT * FROM " . $this->model . " WHERE user_id=" . $userId . " AND deleted IS NULL ORDER BY start_year DESC";
+
+        return MySql::query($sql)->fetchAll(PDO::FETCH_CLASS);
     }
 }

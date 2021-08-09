@@ -13,6 +13,9 @@
                   <a class="nav-link" href="/user">User</a>
                </li>
                <li class="nav-item">
+                  <a class="nav-link" href="/education">Education</a>
+               </li>
+               <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>
                </li>
                <li class="nav-item">

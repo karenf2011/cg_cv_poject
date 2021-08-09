@@ -49,23 +49,31 @@ $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', 
 
 // All the routes concerning educations
 
-// $router->get('education', 'App/Controllers/EducationController.php@index', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('education', 'App/Controllers/EducationController.php@index', [
+    'show' => Permissions::class,
+]);
 
-// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
+    'read' => Permissions::class,
+]);
 
-// $router->get('education/create', 'App/Controllers/EducationController.php@create');
+$router->get('education/create', 'App/Controllers/EducationController.php@create');
 
-// $router->post('education/store', 'App/Controllers/EducationController.php@store', [
-//     'store' => Permissions::class,
-// ]);
+$router->post('education/store', 'App/Controllers/EducationController.php@store', [
+    'store' => Permissions::class,
+]);
 
-// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('education/{id}/edit', 'App/Controllers/EducationController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('education/{id}/update', 'App/Controllers/EducationController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('education/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+    'delete' => Permissions::class
+]);
 
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');

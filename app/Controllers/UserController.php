@@ -71,6 +71,7 @@ class UserController extends Controller
         
         // Save record to database
         UserModel::load()->update($user, $userId);
+
         View::redirect('user/' . $userId);
     }
 
