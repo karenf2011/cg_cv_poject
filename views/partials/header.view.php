@@ -13,7 +13,10 @@
                   <a class="nav-link" href="/user">User</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/education">Education</a>
+                  <a class="nav-link" href="/educations">Educations</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/jobs">Jobs</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>

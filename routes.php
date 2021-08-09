@@ -49,29 +49,57 @@ $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', 
 
 // All the routes concerning educations
 
-$router->get('education', 'App/Controllers/EducationController.php@index', [
+$router->get('educations', 'App/Controllers/EducationController.php@index', [
     'show' => Permissions::class,
 ]);
 
-$router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
+$router->get('educations/{id}', 'App/Controllers/EducationController.php@show', [
     'read' => Permissions::class,
 ]);
 
-$router->get('education/create', 'App/Controllers/EducationController.php@create');
+$router->get('educations/create', 'App/Controllers/EducationController.php@create');
 
-$router->post('education/store', 'App/Controllers/EducationController.php@store', [
+$router->post('educations/store', 'App/Controllers/EducationController.php@store', [
     'store' => Permissions::class,
 ]);
 
-$router->get('education/{id}/edit', 'App/Controllers/EducationController.php@edit', [
+$router->get('educations/{id}/edit', 'App/Controllers/EducationController.php@edit', [
     'edit' => Permissions::class,
 ]);
 
-$router->post('education/{id}/update', 'App/Controllers/EducationController.php@update', [
+$router->post('educations/{id}/update', 'App/Controllers/EducationController.php@update', [
     'update' => Permissions::class
 ]);
 
-$router->get('education/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+$router->get('educations/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning jobs
+
+$router->get('jobs', 'App/Controllers/JobController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('jobs/{id}', 'App/Controllers/JobController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('jobs/create', 'App/Controllers/JobController.php@create');
+
+$router->post('jobs/store', 'App/Controllers/JobController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('jobs/{id}/edit', 'App/Controllers/JobController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('jobs/{id}/update', 'App/Controllers/JobController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('jobs/{id}/destroy', 'App/Controllers/JobController.php@destroy', [
     'delete' => Permissions::class
 ]);
 
