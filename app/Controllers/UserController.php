@@ -19,6 +19,18 @@ class UserController extends Controller
         ]);
     }
 
+    //  Show user record
+     
+    public function show()
+    {
+        $userId = Helper::getIdFromUrl('user');
+        
+        View::render('users/show.view', [
+            'user'   => UserModel::load()->get($userId),
+        ]);
+        
+    }
+
     // Show a form to create a new user
     
     public function create()
@@ -71,19 +83,8 @@ class UserController extends Controller
         
         // Save record to database
         UserModel::load()->update($user, $userId);
-        View::redirect('user/' . $userId);
-    }
 
-    //  Show user record
-     
-    public function show()
-    {
-        $userId = Helper::getIdFromUrl('user');
-        
-        View::render('users/show.view', [
-            'user'   => UserModel::load()->get($userId),
-        ]);
-        
+        View::redirect('user/' . $userId);
     }
 
     //  Archive a user record into the database (soft delete)

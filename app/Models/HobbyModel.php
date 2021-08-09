@@ -6,10 +6,10 @@ use App\Libraries\MySql;
 use App\Models\Model;
 use PDO;
 
-class EducationModel extends Model
+class HobbyModel extends Model
 {
     // Name of the table
-    protected $model = "educations";
+    protected $model = "hobbies";
 
     // Max number of records when fetching all records from table
     protected $limit;
@@ -40,14 +40,14 @@ class EducationModel extends Model
         );   
     }
 
-    public function userEducations(int $userId)
+    public function userHobbies(int $userId)
     {
         if (empty($userId)) {
             return false;
         }
         
         $model = $this->model;
-        $sql = "SELECT * FROM " . $model . " WHERE user_id=" . $userId . " AND deleted IS NULL ORDER BY start_year DESC";
+        $sql = "SELECT * FROM " . $model . " WHERE user_id=" . $userId . " AND deleted IS NULL";
 
         return MySql::query($sql)->fetchAll(PDO::FETCH_CLASS);
     }

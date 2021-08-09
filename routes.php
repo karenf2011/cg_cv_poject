@@ -49,23 +49,115 @@ $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', 
 
 // All the routes concerning educations
 
-// $router->get('education', 'App/Controllers/EducationController.php@index', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('educations', 'App/Controllers/EducationController.php@index', [
+    'show' => Permissions::class,
+]);
 
-// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('educations/{id}', 'App/Controllers/EducationController.php@show', [
+    'read' => Permissions::class,
+]);
 
-// $router->get('education/create', 'App/Controllers/EducationController.php@create');
+$router->get('educations/create', 'App/Controllers/EducationController.php@create');
 
-// $router->post('education/store', 'App/Controllers/EducationController.php@store', [
-//     'store' => Permissions::class,
-// ]);
+$router->post('educations/store', 'App/Controllers/EducationController.php@store', [
+    'store' => Permissions::class,
+]);
 
-// $router->get('education/{id}', 'App/Controllers/EducationController.php@show', [
-//     'show' => Permissions::class,
-// ]);
+$router->get('educations/{id}/edit', 'App/Controllers/EducationController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('educations/{id}/update', 'App/Controllers/EducationController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('educations/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning jobs
+
+$router->get('jobs', 'App/Controllers/JobController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('jobs/{id}', 'App/Controllers/JobController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('jobs/create', 'App/Controllers/JobController.php@create');
+
+$router->post('jobs/store', 'App/Controllers/JobController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('jobs/{id}/edit', 'App/Controllers/JobController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('jobs/{id}/update', 'App/Controllers/JobController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('jobs/{id}/destroy', 'App/Controllers/JobController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning skills
+
+$router->get('skills', 'App/Controllers/SkillController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('skills/{id}', 'App/Controllers/SkillController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('skills/create', 'App/Controllers/SkillController.php@create');
+
+$router->post('skills/store', 'App/Controllers/SkillController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('skills/{id}/edit', 'App/Controllers/SkillController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('skills/{id}/update', 'App/Controllers/SkillController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('skills/{id}/destroy', 'App/Controllers/SkillController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+// All the routes concerning hobbies
+
+$router->get('hobbies', 'App/Controllers/HobbyController.php@index', [
+    'show' => Permissions::class,
+]);
+
+$router->get('hobbies/{id}', 'App/Controllers/HobbyController.php@show', [
+    'read' => Permissions::class,
+]);
+
+$router->get('hobbies/create', 'App/Controllers/HobbyController.php@create');
+
+$router->post('hobbies/store', 'App/Controllers/HobbyController.php@store', [
+    'store' => Permissions::class,
+]);
+
+$router->get('hobbies/{id}/edit', 'App/Controllers/HobbyController.php@edit', [
+    'edit' => Permissions::class,
+]);
+
+$router->post('hobbies/{id}/update', 'App/Controllers/HobbyController.php@update', [
+    'update' => Permissions::class
+]);
+
+$router->get('hobbies/{id}/destroy', 'App/Controllers/HobbyController.php@destroy', [
+    'delete' => Permissions::class
+]);
 
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');

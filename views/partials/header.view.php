@@ -13,6 +13,18 @@
                   <a class="nav-link" href="/user">User</a>
                </li>
                <li class="nav-item">
+                  <a class="nav-link" href="/educations">Educations</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/jobs">Jobs</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/skills">Skills</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/hobbies">Hobbies</a>
+               </li>
+               <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>
                </li>
                <li class="nav-item">
