@@ -1,30 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 body {
-    font-family: 'Assistant', sans-serif;
-    font-size: 1em;
-    font-weight: 200;
-    background-color: white;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 1.1em;
+	font-weight: 200;
+}
+
+.main {
+	margin-top: 80px;
+	margin-bottom: 40px;
+}
+
+.navbar {
+    padding: 10px;
+}
+
+.navbar li {
+	padding-left: 15px;
+}
+
+h1 {
+	padding-bottom: 20px;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 25vw;
 }
 
 a:link,
 a:active,
 a:visited {
-    color: white;
+    color:black;
 }
 
-.error-message {
+/* .error-message {
     color: white;
-}
-
-header {
-    height: 100px;
-    background-color: rgb(158 210 157);
-    width: 100%;
-    color: black;
-    z-index: 1;
-    border-bottom: 1px solid #f2f2f2;
 }
 
 .center-box {
@@ -115,18 +131,9 @@ header .guitar-icon {
     padding: 7px;
     border: 1px solid magenta;
     border-radius: .3em;
-}
+} */ 
 
-footer {
-    height: 120px;
-    background-color: #2f2c2d;
-    width: 100%;
-    position: absolute;
-    bottom: -1px;
-    color: white;
-}
-
-.overlay {
+/* .overlay {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -189,6 +196,3 @@ footer {
     cursor: pointer;
 }
 
-input[type="text"], input[type="email"] {
-    width: 100%;
-}

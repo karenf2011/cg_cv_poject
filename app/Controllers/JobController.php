@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\JobModel;
-use App\Models\UserModel;
 
 class JobController extends Controller 
 {
@@ -16,7 +15,6 @@ class JobController extends Controller
         $userId = Helper::getUserIdFromSession('user');
 
         View::render('jobs/index.view', [
-            'user'      => UserModel::load()->get($userId),
             'jobs'      => JobModel::load()->userJobs($userId),
         ]);
     }
@@ -46,6 +44,11 @@ class JobController extends Controller
 
     public function store()
     {
+        // Sets end year to NULL if not set
+        if((int)$_POST['end_year'] === 0) {
+	        $_POST['end_year'] = NULL;
+        }
+        
         // Saves post data in job var
         $job = $_POST;
         
@@ -53,11 +56,6 @@ class JobController extends Controller
         $job['user_id'] = Helper::getUserIdFromSession();
         $job['created_by'] = Helper::getUserIdFromSession();
         $job['created'] = date('Y-m-d H:i:s');
-        
-        // Sets end year to NULL if not set
-        if($job['end_year'] === ""){
-            $job['end_year'] = NULL;
-        }
         
         // Save record to database
         JobModel::load()->store($job);
@@ -83,13 +81,13 @@ class JobController extends Controller
     {
         $jobId = Helper::getIdFromUrl('jobs');
 
+        // Sets end year to NULL if not set
+        if((int)$_POST['end_year'] === 0) {
+	        $_POST['end_year'] = NULL;
+        }
+
         // Saves post data in job var
         $job = $_POST;
-
-        // Sets end year to NULL if not set
-        if($job['end_year'] === ""){
-            $job['end_year'] = NULL;
-        }
         
         // Save record to database
         JobModel::load()->update($job, $jobId);

@@ -1,12 +1,19 @@
 <?php require 'views/partials/header.view.php' ?>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-2">
-            <?= $vars['skill']->name ?>
+
+<div class="container-fluid main">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><?= $vars['skill']->name ?></h5>
+            <p class="card-text"><?= $vars['skill']->info ?></p>
+            <button><a href="/skills/<?= $vars['skill']->id ?>/edit" class="card-link">Edit</a></button>
+            <button><a href="/skills/<?= $vars['skill']->id ?>/destroy" class="card-link">Delete</a></button>
         </div>
-        <div class="col-3">
-            <?= $vars['skill']->info ?>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <button><a href="/skills">Back to overview</a></button>
         </div>
     </div>
 </div>
+
 <?php require 'views/partials/footer.view.php' ?>

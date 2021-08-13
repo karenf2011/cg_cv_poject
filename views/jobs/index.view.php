@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.view.php' ?>
 <div class="container-fluid main">
     <h1>Werkervaring van 
-        <?= $vars['user']->first_name ?>
+        <?= $_SESSION['user']['full_name'] ?>
     </h1>
 
     <?php foreach($vars['jobs'] as $job) :?>
@@ -26,8 +26,22 @@
                     <?= $job->info ?>  
                 </p>
             </div>
+            <div class="col-1">
+                <button><a href="/jobs/<?= $job->id ?>">Show</a></button>
+            </div>
+            <div class="col-1">
+                <button><a href="/jobs/<?= $job->id ?>/edit">Edit</a></button>
+            </div>
+            <div class="col-1">
+                <button><a href="/jobs/<?= $job->id ?>/destroy">Delete</a></button>
+            </div>
         </div>
     <?php endforeach ?>
+    <div class="row">
+        <div class="col">
+            <button><a href="/jobs/create">Insert new job</a></button>
+        </div>
+    </div>
 </div>
 
 

@@ -1,7 +1,8 @@
 <?php require 'views/partials/header.view.php' ?>
+
 <div class="container-fluid main">
     <h1>Vaardigheden van 
-        <?= $vars['user']->first_name ?>
+        <?= $_SESSION['user']['full_name'] ?>
     </h1>
 
     <?php foreach($vars['skills'] as $skill) :?>
@@ -16,8 +17,22 @@
                     <?= $skill->info ?>  
                 </p>
             </div>
+            <div class="col-1">
+                <button><a href="/skills/<?= $skill->id ?>">Show</a></button>
+            </div>
+            <div class="col-1">
+                <button><a href="/skills/<?= $skill->id ?>/edit">Edit</a></button>
+            </div>
+            <div class="col-1">
+                <button><a href="/skills/<?= $skill->id ?>/destroy">Delete</a></button>
+            </div>
         </div>
     <?php endforeach ?>
+    <div class="row">
+        <div class="col">
+            <button><a href="/skills/create">Insert new skill</a></button>
+        </div>
+    </div>
 </div>
 
 

@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\HobbyModel;
-use App\Models\UserModel;
 
 class HobbyController extends Controller
 {
@@ -15,7 +14,6 @@ class HobbyController extends Controller
         $userId = Helper::getUserIdFromSession('user');
 
         View::render('hobbies/index.view', [
-            'user'      => UserModel::load()->get($userId),
             'hobbies'   => HobbyModel::load()->userHobbies($userId),
         ]);
     }
@@ -42,6 +40,11 @@ class HobbyController extends Controller
     // Store a skill record in the database
     public function store ()
     {
+        // Sets info to NULL if not set
+        if($_POST['info'] === "") {
+	        $_POST['info'] = NULL;
+        }
+        
         // Saves post data in hobby var
         $hobby = $_POST;
 
@@ -49,11 +52,6 @@ class HobbyController extends Controller
         $hobby['user_id'] = Helper::getUserIdFromSession();
         $hobby['created_by'] = Helper::getUserIdFromSession();
         $hobby['created'] = date('Y-m-d H:i:s');
-
-        // Sets info to NULL if not set
-        if($hobby['info'] === ""){
-            $hobby['info'] = NULL;
-        }
 
         // Saves record to database
         HobbyModel::load()->store($hobby);
@@ -77,13 +75,13 @@ class HobbyController extends Controller
     {
         $hobbyId = Helper::getIdFromUrl('hobbies');
 
+        // Sets info to NULL if not set
+        if($_POST['info'] === "") {
+	        $_POST['info'] = NULL;
+        }
+
         // Saves post data in hobby var
         $hobby = $_POST;
-
-        // Sets info to NULL if not set
-        if($hobby['info'] === ""){
-            $hobby['info'] = NULL;
-        }
 
         // Saves record to database
         HobbyModel::load()->update($hobby, $hobbyId);
