@@ -16,7 +16,6 @@ class Model
 
     private $protectedFields;
 
-
     /**
      * Constructor
      * Set $model and $limit from child Model
@@ -27,7 +26,6 @@ class Model
         $this->limit = $limit;
         $this->protectedFields = $protectedFields;
     }
-
     
     /**
      * Fetching all records from table
@@ -45,7 +43,6 @@ class Model
 
         return MySql::query($sql)->fetchAll(PDO::FETCH_CLASS);
     }
-
 
     /**
      * Fetching one record based on the id
@@ -71,14 +68,12 @@ class Model
         return count($res) > 0 ? $res[0] : null;
     }
 
-
     public function findById($id)
     {
         $data = $this->get($id);
         
         return !is_null($data) ? $data : false;
     }
-
 
     /**
      * Saves a record to the model
@@ -89,7 +84,6 @@ class Model
     {
         return MySql::insert($this->removeIllegalFields($data), $this->model);
     }
-
 
     /**
      * Updates a record to the model
@@ -102,7 +96,6 @@ class Model
         MySql::update($this->removeIllegalFields($data), $this->model, $id);
     }
 
-
     /**
      * Archives a record to the model
      * @param $data array
@@ -111,7 +104,6 @@ class Model
     {
         Mysql::delete($id, $this->model);
     }
-
 
     private function removeIllegalFields(array $data)
     {
@@ -124,7 +116,6 @@ class Model
         return $data;
     }
     
-
     private function composeQuery(array $fields)
     {
         $getFields = '';

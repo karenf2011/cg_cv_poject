@@ -6,7 +6,7 @@ use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\HobbyModel;
 
-class HobbyController extends Controller
+class HobbyController
 {
     // Show a list of skills for the selected user
     public function index()

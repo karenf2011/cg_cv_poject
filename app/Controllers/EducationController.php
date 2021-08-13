@@ -6,7 +6,7 @@ use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\EducationModel;
 
-class EducationController extends Controller
+class EducationController
 {
     // Show a list of educations for the selected user
     public function index()

@@ -6,7 +6,7 @@ use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\JobModel;
 
-class JobController extends Controller 
+class JobController
 {
     // Shows a list of jobs for the selected user
 

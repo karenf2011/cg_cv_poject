@@ -7,28 +7,17 @@ use App\Models\UserModel;
 use App\Libraries\View;
 use App\Models\RoleModel;
 
-class UserController extends Controller
+class UserController
 {
-
-    // Show a list of users
+    //  Show user record
      
     public function index()
     {
-        View::render('users/index.view', [
-            'users' => UserModel::load()->all(),
-        ]);
-    }
-
-    //  Show user record
-     
-    public function show()
-    {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         
-        View::render('users/show.view', [
+        View::render('users/index.view', [
             'user'   => UserModel::load()->get($userId),
         ]);
-        
     }
 
     // Show a form to create a new user
@@ -62,11 +51,11 @@ class UserController extends Controller
      
     public function edit()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
 
         View::render('users/edit.view', [
             'method'    => 'POST',
-            'action'    => '/user/' . $userId . '/update',
+            'action'    => '/user/update',
             'user'      => UserModel::load()->get($userId),
             'roles'     => RoleModel::load()->all(),
         ]);
@@ -76,7 +65,7 @@ class UserController extends Controller
      
     public function update()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
 
         // Save post data in $user
         $user = $_POST;
@@ -91,7 +80,7 @@ class UserController extends Controller
     
     public function destroy()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         Usermodel::load()->destroy($userId);
     }
 

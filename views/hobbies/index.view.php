@@ -30,7 +30,7 @@
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/hobbies/create">Insert new skill</a></button>
+            <button><a href="/hobbies/create">Insert new hobby</a></button>
         </div>
     </div>
 </div>

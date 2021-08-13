@@ -20,9 +20,7 @@ class RoleModel extends Model
         'deleted_by',
     ];
 
-    /**
-     * Load class 'staticaly'
-     */
+    // Load class 'statically'
     public static function load()
     {
         return new static;

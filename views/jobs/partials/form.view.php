@@ -1,6 +1,5 @@
-<div class="main">
+<div class="main container-fluid">
     <form method="<?= $vars['method'] ?>" action="<?= $vars['action'] ?> ">
-        <div class="container-fluid mt-5">
             <div class="row mb-3">
                 <div class="col">
                     <input type="text" name="name" placeholder="Soort werk" value="<?= isset($vars['job']) ? $vars['job']->name : '' ?>">
@@ -28,9 +27,8 @@
             <input type="hidden" name="f_token" value="<?= createToken() ?>">
 
             <input type="submit" value="Opslaan">
-        </div>
     </form>
-    <div class="row mt-4 ml-1">
+    <div class="row mt-4">
         <div class="col">
             <button><a href="/jobs">Back to overview</a></button>
         </div>

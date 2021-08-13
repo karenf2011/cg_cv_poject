@@ -2,23 +2,26 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Libraries\View;
+use App\Models\EducationModel;
+use App\Models\HobbyModel;
+use App\Models\JobModel;
+use App\Models\SkillModel;
+use App\Models\UserModel;
 
 class ProfileController
 {
     public function index()
     {
-        if (isset($_SESSION) && isset($_SESSION['user'])) {
-            return View::render('credentials/me.view');
-        } else {
-            header('Location: login');
-        }
-        
+        $userId = Helper::getUserIdFromSession();
+
+        View::render('profile/index.view', [
+            'user'          => UserModel::load()->get($userId),
+            'educations'    => EducationModel::load()->userEducations($userId),
+            'jobs'          => JobModel::load()->userJobs($userId),
+            'skills'        => SkillModel::load()->userSkills($userId),
+            'hobbies'       => HobbyModel::load()->userHobbies($userId),
+        ]);
     }
-
-    public function changeEmail()
-    {
-
-    }
-
 }
