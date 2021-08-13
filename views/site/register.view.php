@@ -1,5 +1,6 @@
 <?php require 'views/partials/header.view.php' ?>
-<div class="login-overlay">
+
+<div class="main login-overlay">
     <div class="center-box register-form">
         <div class="mb-3">
             <span class="guitar-icon">
@@ -41,10 +42,11 @@
 
             <div class="col-md-12 mb-3">
                 <input type="submit" class="btn btn-dark" value="Submit">
-                <input type="button" class="btn btn-dark" id="register-cancel" value="Cancel">
             </div>
         </form>
     </div>
 </div>
 
 <script src="public/js/partials/register.js"></script>
+
+<?php require 'views/partials/footer.view.php' ?>

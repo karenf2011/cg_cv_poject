@@ -1,15 +1,16 @@
 <?php require 'views/partials/header.view.php' ?>
-<div class="login-overlay">
+
+<div class="main login-overlay">
     <div class="center-box login-form">
         <div class="mb-3">
-            <div><h3><?= $_ENV['APP_NAME'] ?></h3></div>
+            <div><h3>Login page</h3></div>
         </div>
 
         <form method="POST" name="frmLogin" onsubmit="return false;">
             <?= generateFormTokenHTML() ?>
             <div class="mb-3">
                 <label for="email" class="form-label">Your email address</label>
-                <input type="email" class="form-control" name="email" id="email" value="toby@codegorilla.nl" required />
+                <input type="email" class="form-control" name="email" id="email" required />
             </div>
 
             <div class="mb-3">
@@ -32,3 +33,5 @@
 </div>
 
 <script src="public/js/partials/login.js"></script>
+
+<?php require 'views/partials/footer.view.php' ?>

@@ -5,9 +5,8 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\EducationModel;
-use App\Models\UserModel;
 
-class EducationController extends Controller
+class EducationController
 {
     // Show a list of educations for the selected user
     public function index()
@@ -15,7 +14,6 @@ class EducationController extends Controller
         $userId = Helper::getUserIdFromSession('user');       
         
         View::render('educations/index.view', [
-            'user'       => UserModel::load()->get($userId),
             'educations' => EducationModel::load()->userEducations($userId),
         ]);
     }
@@ -24,7 +22,7 @@ class EducationController extends Controller
     public function show()
     {
         $educationId = Helper::getIdFromUrl('educations');
-
+       
         View::render('educations/show.view', [
             'education'     => EducationModel::load()->get($educationId),
         ]);
@@ -42,6 +40,11 @@ class EducationController extends Controller
     // Store an education record in the database
     public function store ()
     {
+        // Sets end year to NULL if not set
+        if((int)$_POST['end_year'] === 0) {
+	        $_POST['end_year'] = NULL;
+        }
+
         // Saves post data in education var
         $education = $_POST;
         
@@ -49,11 +52,6 @@ class EducationController extends Controller
         $education['user_id'] = Helper::getUserIdFromSession();
         $education['created_by'] = Helper::getUserIdFromSession();
         $education['created'] = date('Y-m-d H:i:s');
-
-        // Sets end year to NULL if not set
-        if($education['end_year'] === ""){
-            $education['end_year'] = NULL;
-        }
         
         // Save the record to the database
         EducationModel::load()->store($education);
@@ -77,13 +75,13 @@ class EducationController extends Controller
     {
         $educationId = Helper::getIdFromUrl('educations');
 
+        // Sets end year to NULL if not set
+        if((int)$_POST['end_year'] === 0) {
+	        $_POST['end_year'] = NULL;
+        }
+        
         // Saves post data in education var
         $education = $_POST;
-
-        // Sets end year to NULL if not set
-        if($education['end_year'] === ""){
-            $education['end_year'] = NULL;
-        }
 
         // Save record to database
         EducationModel::load()->update($education, $educationId);
