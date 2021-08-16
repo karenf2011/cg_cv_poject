@@ -11,7 +11,7 @@ class HobbyController
     // Show a list of skills for the selected user
     public function index()
     {
-        $userId = Helper::getUserIdFromSession('user');
+        $userId = Helper::getUserIdFromSession();
 
         View::render('hobbies/index.view', [
             'hobbies'   => HobbyModel::load()->userHobbies($userId),
@@ -21,7 +21,7 @@ class HobbyController
     // Show skill record
     public function show()
     {
-        $hobbyId = Helper::getIdFromUrl('hobbies');
+        $hobbyId = Helper::getIdFromUrl('hobby');
         
         View::render('hobbies/show.view', [
             'hobby'     => HobbyModel::load()->get($hobbyId),
@@ -33,7 +33,7 @@ class HobbyController
     {
         View::render('hobbies/create.view', [
             'method'    => 'POST',
-            'action'    => '/hobbies/store',
+            'action'    => '/hobby/store',
         ]);
     }
 
@@ -55,17 +55,17 @@ class HobbyController
 
         // Saves record to database
         HobbyModel::load()->store($hobby);
-        View::redirect('hobbies');
+        View::redirect('hobby');
     }
 
     // Show a form to edit an skill record
     public function edit()
     {
-        $hobbyId = Helper::getIdFromUrl('hobbies');
+        $hobbyId = Helper::getIdFromUrl('hobby');
 
         View::render('hobbies/edit.view', [
             'method'    => 'POST',
-            'action'    => '/hobbies/' . $hobbyId . '/update',
+            'action'    => '/hobby/' . $hobbyId . '/update',
             'hobby'     => HobbyModel::load()->get($hobbyId),
         ]);
     }
@@ -73,7 +73,7 @@ class HobbyController
     // Update a skill record
     public function update()
     {
-        $hobbyId = Helper::getIdFromUrl('hobbies');
+        $hobbyId = Helper::getIdFromUrl('hobby');
 
         // Sets info to NULL if not set
         if($_POST['info'] === "") {
@@ -86,15 +86,15 @@ class HobbyController
         // Saves record to database
         HobbyModel::load()->update($hobby, $hobbyId);
 
-        View::redirect('hobbies');
+        View::redirect('hobby');
     }
 
     // Archive an education record into the database (soft delete)
     public function destroy()
     {
-        $hobbyId = Helper::getIdFromUrl('hobbies');
+        $hobbyId = Helper::getIdFromUrl('hobby');
 
         HobbyModel::load()->destroy($hobbyId);
-        View::redirect('hobbies');
+        View::redirect('hobby');
     }
 }

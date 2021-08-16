@@ -40,8 +40,13 @@
 
             <input type="hidden" name="f_token" value="<?= createToken() ?>">
 
-            <div class="col-md-12 mb-3">
+            <div class="col-1 mb-3">
                 <input type="submit" class="btn btn-dark" value="Submit">
+            </div>
+            <div class="col-6">
+                <button class="btn btn-dark">
+                    <a id="btn-link" href="/login">Already have an account?</a>
+                </button>
             </div>
         </form>
     </div>

@@ -48,7 +48,7 @@
     </form>
     <div class="row mt-4">
         <div class="col">
-            <button><a href="/user">Back to overview</a></button>
+            <button><a href="/user/<?= $vars['user']->id ?>">Back to overview</a></button>
         </div>
     </div>
 </div>

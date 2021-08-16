@@ -42,9 +42,11 @@ class Permissions
         $this->setUser();
 
         if (!$this->checkPermission()) {
-            return View::render('errors/403.view', [
+           
+            die(View::render('errors/403.view', [
                 'message' => $route . " | " . $crudString
-            ]);
+            ]));
+
         }
     }
 

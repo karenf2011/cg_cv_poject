@@ -29,9 +29,15 @@ return [
         'ALTER TABLE `permissions` ADD FOREIGN KEY (`deleted_by`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
     ],
 
-    'seeder' => [
+   'seeder' => [
         'type' => 'array',
         'data' => array([
+            'name'       => 'list_user',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
             'name'       => 'show_user',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
@@ -42,21 +48,135 @@ return [
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
         ],
-
-        [
-            'name'       => 'read_user',
-            'created'    => date('Y-m-d H:i:s'),
-            'created_by' => 1
-        ],
         
         [
-            'name'       => 'update_user',
+            'name'       => 'edit_user',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
         ],
 
         [
             'name'       => 'delete_user',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'list_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'create_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'edit_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'list_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'create_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'edit_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'list_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'create_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'edit_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'list_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'create_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'edit_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_hobby',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
         ]),

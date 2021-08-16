@@ -5,13 +5,13 @@
         <div class="card-body">
             <h5 class="card-title"><?= $vars['hobby']->name ?></h5>
             <p class="card-text"><?= $vars['hobby']->info ?></p>
-            <button><a href="/skills/<?= $vars['hobby']->id ?>/edit" class="card-link">Edit</a></button>
-            <button><a href="/skills/<?= $vars['hobby']->id ?>/destroy" class="card-link">Delete</a></button>
+            <button><a href="/hobby/<?= $vars['hobby']->id ?>/edit" class="card-link">Edit</a></button>
+            <button><a href="/hobby/<?= $vars['hobby']->id ?>/destroy" class="card-link">Delete</a></button>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col">
-            <button><a href="/hobbies">Back to overview</a></button>
+            <button><a href="/hobbys">Back to overview</a></button>
         </div>
     </div>
 </div>

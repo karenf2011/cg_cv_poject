@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Helpers\Helper;
 use App\Libraries\View;
-use App\Models\UserModel;
 
 class HomeController {
 
     public function index()
     {
-        $user = UserModel::load();
+        $userId = Helper::getUserIdFromSession();
 
-        return View::render('site/home.view');
+        if (Helper::isLoggedIn()) {
+            View::redirect('profile/' . $userId);
+        } else {
+            View::redirect('login');
+        }
     }
-
 }

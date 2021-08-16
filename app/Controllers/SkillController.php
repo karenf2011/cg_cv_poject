@@ -11,7 +11,7 @@ class SkillController
     // Show a list of skills for the selected user
     public function index()
     {
-        $userId = Helper::getUserIdFromSession('user');
+        $userId = Helper::getUserIdFromSession();
 
         View::render('skills/index.view', [
             'skills'    => SkillModel::load()->userSkills($userId),
@@ -21,7 +21,7 @@ class SkillController
     // Show skill record
     public function show()
     {
-        $skillId = Helper::getIdFromUrl('skills');
+        $skillId = Helper::getIdFromUrl('skill');
 
         View::render('skills/show.view', [
             'skill'     => SkillModel::load()->get($skillId),
@@ -33,7 +33,7 @@ class SkillController
     {
         View::render('skills/create.view', [
             'method'    => 'POST',
-            'action'    => '/skills/store',
+            'action'    => '/skill/store',
         ]);
     }
 
@@ -55,17 +55,17 @@ class SkillController
         
         // Save the record to the database
         SkillModel::load()->store($skill);
-        View::redirect('skills');
+        View::redirect('skill');
     }
 
     // Show a form to edit an skill record
     public function edit()
     {
-        $skillId = Helper::getIdFromUrl('skills');
+        $skillId = Helper::getIdFromUrl('skill');
 
         View::render('skills/edit.view', [
             'method'    => 'POST',
-            'action'    => '/skills/' . $skillId . '/update',
+            'action'    => '/skill/' . $skillId . '/update',
             'skill'     => SkillModel::load()->get($skillId),
         ]);
     }
@@ -73,7 +73,7 @@ class SkillController
     // Update a skill record
     public function update()
     {
-        $skillId = Helper::getIdFromUrl('skills');
+        $skillId = Helper::getIdFromUrl('skill');
 
         // Sets info to NULL if not set
         if($_POST['info'] === "") {
@@ -86,15 +86,15 @@ class SkillController
         // Saves record to database
         SkillModel::load()->update($skill, $skillId);
 
-        View::redirect('skills');
+        View::redirect('skill');
     }
 
     // Archive a skill record into the database (soft delete)
     public function destroy()
     {
-        $skillId = Helper::getIdFromUrl('skills');
+        $skillId = Helper::getIdFromUrl('skill');
 
         SkillModel::load()->destroy($skillId);
-        View::redirect('skills');
+        View::redirect('skill');
     }
 }

@@ -13,13 +13,13 @@
                     <?php endif ?> 
             </h6>
             <p class="card-text"><?= $vars['job']->info ?></p>
-            <button><a href="/jobs/<?= $vars['job']->id ?>/edit" class="card-link">Edit</a></button>
-            <button><a href="/jobs/<?= $vars['job']->id ?>/destroy" class="card-link">Delete</a></button>
+            <button><a href="/job/<?= $vars['job']->id ?>/edit" class="card-link">Edit</a></button>
+            <button><a href="/job/<?= $vars['job']->id ?>/destroy" class="card-link">Delete</a></button>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col">
-            <button><a href="/jobs">Back to overview</a></button>
+            <button><a href="/job">Back to overview</a></button>
         </div>
     </div>
 </div>

@@ -33,6 +33,10 @@ a:visited {
     color:black;
 }
 
+#btn-link  {
+    color: white;
+}
+
 .error-message {
     color: white;
 }

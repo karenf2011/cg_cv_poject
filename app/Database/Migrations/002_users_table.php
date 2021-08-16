@@ -53,7 +53,7 @@ return [
             'last_name'  => 'Puk',
             'email'      => 'ppuk@codegorilla.nl',
             'password'   => password_hash('Gorilla1!', PASSWORD_DEFAULT),
-            'role'       => 2,
+            'role'       => 3,
             'country'    => 156,
             'city'       => 'Groningen',
             'birthday'   => '1996-03-19',

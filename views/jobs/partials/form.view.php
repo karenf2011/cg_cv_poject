@@ -30,7 +30,7 @@
     </form>
     <div class="row mt-4">
         <div class="col">
-            <button><a href="/jobs">Back to overview</a></button>
+            <button><a href="/job">Back to overview</a></button>
         </div>
     </div>
 </div>
