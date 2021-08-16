@@ -12,7 +12,7 @@ class JobController
 
     public function index()
     {
-        $userId = Helper::getUserIdFromSession('user');
+        $userId = Helper::getUserIdFromSession();
 
         View::render('jobs/index.view', [
             'jobs'      => JobModel::load()->userJobs($userId),
@@ -23,7 +23,7 @@ class JobController
 
     public function show()
     {
-        $jobId = Helper::getIdFromUrl('jobs');
+        $jobId = Helper::getIdFromUrl('job');
 
         View::render('jobs/show.view', [
             'job'      => JobModel::load()->get($jobId), 
@@ -36,7 +36,7 @@ class JobController
     {
         View::render('jobs/create.view', [
             'method'    => 'POST',
-            'action'    => '/jobs/store',
+            'action'    => '/job/store',
         ]); 
     }
 
@@ -59,18 +59,18 @@ class JobController
         
         // Save record to database
         JobModel::load()->store($job);
-        View::redirect('jobs');
+        View::redirect('job');
     }
 
     // Show a form to edit a job record
 
     public function edit()
     {
-        $jobId = Helper::getIdFromUrl('jobs');
+        $jobId = Helper::getIdFromUrl('job');
 
         View::render('jobs/edit.view', [
             'method'    => 'POST',
-            'action'    => '/jobs/' . $jobId . '/update',
+            'action'    => '/job/' . $jobId . '/update',
             'job'       => JobModel::load()->get(($jobId)),
         ]);
     }
@@ -79,7 +79,7 @@ class JobController
 
     public function update()
     {
-        $jobId = Helper::getIdFromUrl('jobs');
+        $jobId = Helper::getIdFromUrl('job');
 
         // Sets end year to NULL if not set
         if((int)$_POST['end_year'] === 0) {
@@ -92,17 +92,17 @@ class JobController
         // Save record to database
         JobModel::load()->update($job, $jobId);
 
-        View::redirect('jobs/' . $jobId);
+        View::redirect('job/' . $jobId);
     }
 
     // Archive a job record into the database (soft delete)
 
     public function destroy()
     {
-        $jobId = Helper::getIdFromUrl('jobs');
+        $jobId = Helper::getIdFromUrl('job');
 
         JobModel::load()->destroy($jobId);
-        View::redirect('jobs');
+        View::redirect('job');
     }
 
 }

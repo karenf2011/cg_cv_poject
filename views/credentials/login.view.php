@@ -20,11 +20,13 @@
 
             <div class="mb-3">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-2">
                         <input type="submit" class="btn btn-dark" value="Login" />
                     </div>
-                    <div class="col-md-6">
-                        <div id="login-message"></div>
+                    <div class="col-3">
+                        <button class="btn btn-dark">
+                            <a id="btn-link" href="/register">New User?</a>
+                        </button>
                     </div>
                 </div>
             </div>

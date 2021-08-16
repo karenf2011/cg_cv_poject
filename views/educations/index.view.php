@@ -28,19 +28,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>">Show</a></button>
+                <button><a href="/education/<?= $education->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>/edit">Edit</a></button>
+                <button><a href="/education/<?= $education->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>/destroy">Delete</a></button>
+                <button><a href="/education/<?= $education->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/educations/create">Insert new education</a></button>
+            <button><a href="/education/create">Insert new education</a></button>
         </div>
     </div>
 </div>

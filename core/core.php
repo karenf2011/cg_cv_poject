@@ -94,3 +94,32 @@ function exception_handler($exception)
 
     require 'views/errors/exceptions.view.php';
 }
+
+/**
+ * Check if there's a session, indicating that a user is logged in
+ */
+function isLoggedIn()
+{
+    return isset($_SESSION) && 
+        isset($_SESSION['user']) && 
+        isset($_SESSION['user']['uid']) &&
+        (int)$_SESSION['user']['uid'] > 0 ? true : false;
+}
+
+
+/**
+ * Get the user ID from session from the user that is logged in
+ */
+function getNameFromSession()
+{
+    return $_SESSION['user']['first_name'];
+}
+
+ /**
+ * Get the user ID from session from the user that is logged in
+ */
+function getUserIdFromSession()
+{
+    return (int)$_SESSION['user']['uid'];
+   
+}

@@ -13,7 +13,7 @@ class UserController
      
     public function index()
     {
-        $userId = Helper::getUserIdFromSession();
+        $userId = Helper::getIdFromUrl('user');
         
         View::render('users/index.view', [
             'user'   => UserModel::load()->get($userId),
@@ -51,11 +51,11 @@ class UserController
      
     public function edit()
     {
-        $userId = Helper::getUserIdFromSession();
+        $userId = Helper::getIdFromUrl('user');
 
         View::render('users/edit.view', [
             'method'    => 'POST',
-            'action'    => '/user/update',
+            'action'    => '/user/' . $userId . '/update',
             'user'      => UserModel::load()->get($userId),
             'roles'     => RoleModel::load()->all(),
         ]);
@@ -65,7 +65,7 @@ class UserController
      
     public function update()
     {
-        $userId = Helper::getUserIdFromSession();
+        $userId = Helper::getIdFromUrl('user');
 
         // Save post data in $user
         $user = $_POST;
@@ -80,7 +80,7 @@ class UserController
     
     public function destroy()
     {
-        $userId = Helper::getUserIdFromSession();
+        $userId = Helper::getIdFromUrl('user');
         Usermodel::load()->destroy($userId);
     }
 

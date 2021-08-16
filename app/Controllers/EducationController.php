@@ -11,7 +11,7 @@ class EducationController
     // Show a list of educations for the selected user
     public function index()
     {
-        $userId = Helper::getUserIdFromSession('user');       
+        $userId = Helper::getUserIdFromSession();       
         
         View::render('educations/index.view', [
             'educations' => EducationModel::load()->userEducations($userId),
@@ -21,7 +21,7 @@ class EducationController
     // Show education record
     public function show()
     {
-        $educationId = Helper::getIdFromUrl('educations');
+        $educationId = Helper::getIdFromUrl('education');
        
         View::render('educations/show.view', [
             'education'     => EducationModel::load()->get($educationId),
@@ -33,12 +33,12 @@ class EducationController
     {
         View::render('educations/create.view', [
             'method'    => 'POST',
-            'action'    => '/educations/store',
+            'action'    => '/education/store',
         ]);
     }
 
     // Store an education record in the database
-    public function store ()
+    public function store()
     {
         // Sets end year to NULL if not set
         if((int)$_POST['end_year'] === 0) {
@@ -55,17 +55,17 @@ class EducationController
         
         // Save the record to the database
         EducationModel::load()->store($education);
-        View::redirect('educations');
+        View::redirect('education');
     }
 
     // Show a form to edit an education record
     public function edit()
     {
-        $educationId = Helper::getIdFromUrl('educations');
+        $educationId = Helper::getIdFromUrl('education');
 
         View::render('educations/edit.view', [
             'method'    => 'POST',
-            'action'    => '/educations/' . $educationId . '/update',
+            'action'    => '/education/' . $educationId . '/update',
             'education' => EducationModel::load()->get($educationId),
         ]);
     }
@@ -73,7 +73,7 @@ class EducationController
     // Update an education record
     public function update()
     {
-        $educationId = Helper::getIdFromUrl('educations');
+        $educationId = Helper::getIdFromUrl('education');
 
         // Sets end year to NULL if not set
         if((int)$_POST['end_year'] === 0) {
@@ -86,15 +86,15 @@ class EducationController
         // Save record to database
         EducationModel::load()->update($education, $educationId);
 
-        View::redirect('educations/' . $educationId);
+        View::redirect('education/' . $educationId);
     }
 
     // Archive an education record into the database (soft delete)
     public function destroy()
     {
-        $educationId = Helper::getIdFromUrl('educations');
+        $educationId = Helper::getIdFromUrl('education');
         
         EducationModel::load()->destroy($educationId);
-        View::redirect('educations');
+        View::redirect('education');
     }
 }

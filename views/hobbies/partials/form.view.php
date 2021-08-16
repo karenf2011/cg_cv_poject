@@ -17,7 +17,7 @@
     </form>
     <div class="row mt-4">
         <div class="col">
-            <button><a href="/hobbies">Back to overview</a></button>
+            <button><a href="/hobby">Back to overview</a></button>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ use App\Middleware\WhenLoggedIn;
 
 class LoginController
 {
-    protected $redirectWhenLoggedIn = 'admin';
+    protected $redirectWhenLoggedIn = '/';
 
 
     public function __construct($function = null)
@@ -24,7 +24,7 @@ class LoginController
     /**
      * Return the login view or,
      * when there's already a login session (user), then
-     * redirect to he home page
+     * redirect to the home page
      */
     public function index()
     {

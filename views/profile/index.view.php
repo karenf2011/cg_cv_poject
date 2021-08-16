@@ -40,19 +40,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>">Show</a></button>
+                <button><a href="/education/<?= $education->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>/edit">Edit</a></button>
+                <button><a href="/education/<?= $education->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/educations/<?= $education->id ?>/destroy">Delete</a></button>
+                <button><a href="/education/<?= $education->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/educations/create">Insert new education</a></button>
+            <button><a href="/education/create">Insert new education</a></button>
         </div>
     </div>
     <br>
@@ -80,19 +80,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/jobs/<?= $job->id ?>">Show</a></button>
+                <button><a href="/job/<?= $job->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/jobs/<?= $job->id ?>/edit">Edit</a></button>
+                <button><a href="/job/<?= $job->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/jobs/<?= $job->id ?>/destroy">Delete</a></button>
+                <button><a href="/job/<?= $job->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/jobs/create">Insert new job</a></button>
+            <button><a href="/job/create">Insert new job</a></button>
         </div>
     </div>
     <br>
@@ -110,19 +110,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>">Show</a></button>
+                <button><a href="/skill/<?= $skill->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>/edit">Edit</a></button>
+                <button><a href="/skill/<?= $skill->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>/destroy">Delete</a></button>
+                <button><a href="/skill/<?= $skill->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/skills/create">Insert new skill</a></button>
+            <button><a href="/skill/create">Insert new skill</a></button>
         </div>
     </div>
     <br>
@@ -140,19 +140,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/hobbies/<?= $hobby->id ?>">Show</a></button>
+                <button><a href="/hobby/<?= $hobby->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/hobbies/<?= $hobby->id ?>/edit">Edit</a></button>
+                <button><a href="/hobby/<?= $hobby->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/hobbies/<?= $hobby->id ?>/destroy">Delete</a></button>
+                <button><a href="/hobby/<?= $hobby->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/hobbies/create">Insert new hobby</a></button>
+            <button><a href="/hobby/create">Insert new hobby</a></button>
         </div>
     </div>
 </div>

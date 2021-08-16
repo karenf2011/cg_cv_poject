@@ -18,19 +18,19 @@
                 </p>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>">Show</a></button>
+                <button><a href="/skill/<?= $skill->id ?>">Show</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>/edit">Edit</a></button>
+                <button><a href="/skill/<?= $skill->id ?>/edit">Edit</a></button>
             </div>
             <div class="col-1">
-                <button><a href="/skills/<?= $skill->id ?>/destroy">Delete</a></button>
+                <button><a href="/skill/<?= $skill->id ?>/destroy">Delete</a></button>
             </div>
         </div>
     <?php endforeach ?>
     <div class="row">
         <div class="col">
-            <button><a href="/skills/create">Insert new skill</a></button>
+            <button><a href="/skill/create">Insert new skill</a></button>
         </div>
     </div>
 </div>
