@@ -2,7 +2,7 @@
 
 <div class="container-fluid main">
     <h1>Opleidingen van 
-        <?= $_SESSION['user']['full_name'] ?>
+       <?= getNameFromSession() ?>
     </h1>
 
     <?php foreach($vars['educations'] as $education) :?>

@@ -22,6 +22,7 @@ class HobbyController
     public function show()
     {
         $hobbyId = Helper::getIdFromUrl('hobby');
+        Helper::checkUserIdAgainstLoginId(HobbyModel::class, $hobbyId);
         
         View::render('hobbies/show.view', [
             'hobby'     => HobbyModel::load()->get($hobbyId),
@@ -62,6 +63,7 @@ class HobbyController
     public function edit()
     {
         $hobbyId = Helper::getIdFromUrl('hobby');
+        Helper::checkUserIdAgainstLoginId(HobbyModel::class, $hobbyId);
 
         View::render('hobbies/edit.view', [
             'method'    => 'POST',
@@ -93,6 +95,7 @@ class HobbyController
     public function destroy()
     {
         $hobbyId = Helper::getIdFromUrl('hobby');
+        Helper::checkUserIdAgainstLoginId(HobbyModel::class, $hobbyId);
 
         HobbyModel::load()->destroy($hobbyId);
         View::redirect('hobby');

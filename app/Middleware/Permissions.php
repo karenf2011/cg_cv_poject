@@ -42,12 +42,15 @@ class Permissions
         $this->setUser();
 
         if (!$this->checkPermission()) {
-           
             die(View::render('errors/403.view', [
                 'message' => $route . " | " . $crudString
             ]));
-
         }
+    }
+
+    public function getSuperAdmin() 
+    {
+        return $this->superUser;
     }
 
     /**

@@ -42,7 +42,7 @@ class Router {
                 foreach($routeData['middleware'] as $key => $middleWare)
                 {
                     if (!is_string($key)) {
-                        throw new \Exception('This function expects an array.');
+                        throw new \Exception('This function expects a string.');
                     }
                     
                     new $middleWare($uri, $key);

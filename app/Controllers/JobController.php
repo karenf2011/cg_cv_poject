@@ -24,6 +24,7 @@ class JobController
     public function show()
     {
         $jobId = Helper::getIdFromUrl('job');
+        Helper::checkUserIdAgainstLoginId(JobModel::class, $jobId);
 
         View::render('jobs/show.view', [
             'job'      => JobModel::load()->get($jobId), 
@@ -67,6 +68,7 @@ class JobController
     public function edit()
     {
         $jobId = Helper::getIdFromUrl('job');
+        Helper::checkUserIdAgainstLoginId(JobModel::class, $jobId);
 
         View::render('jobs/edit.view', [
             'method'    => 'POST',
@@ -100,6 +102,7 @@ class JobController
     public function destroy()
     {
         $jobId = Helper::getIdFromUrl('job');
+        Helper::checkUserIdAgainstLoginId(JobModel::class, $jobId);
 
         JobModel::load()->destroy($jobId);
         View::redirect('job');

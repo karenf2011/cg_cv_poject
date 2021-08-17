@@ -14,7 +14,7 @@ class UserController
     public function index()
     {
         $userId = Helper::getIdFromUrl('user');
-        
+
         View::render('users/index.view', [
             'user'   => UserModel::load()->get($userId),
         ]);

@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\Libraries\View;
+
 class Helper
 {
     /**
@@ -48,7 +50,7 @@ class Helper
 
 		if (empty($cleans) || (!empty($cleans) && count($cleans) < 2))
 		{
-			return '';
+			return 0;
 		}
 
 		for ($i = 0; $i < count($cleans); $i++)
@@ -74,6 +76,15 @@ class Helper
 
 		return $allParams;
     }
+
+	public static function checkUserIdAgainstLoginId($model, $id)
+	{
+		$data = $model::load()->get($id);
+		
+		if (property_exists($data, 'user_id') && (int)$data->user_id !== self::getUserIdFromSession()) {
+			die(View::render('errors/403.view'));
+		}
+	}
 
 	/**
 	 * Clean up emtpy values in an array that was created by PHP explode function
