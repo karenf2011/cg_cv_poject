@@ -22,6 +22,7 @@ class SkillController
     public function show()
     {
         $skillId = Helper::getIdFromUrl('skill');
+        Helper::checkUserIdAgainstLoginId(SkillModel::class, $skillId);
 
         View::render('skills/show.view', [
             'skill'     => SkillModel::load()->get($skillId),
@@ -62,6 +63,7 @@ class SkillController
     public function edit()
     {
         $skillId = Helper::getIdFromUrl('skill');
+        Helper::checkUserIdAgainstLoginId(SkillModel::class, $skillId);
 
         View::render('skills/edit.view', [
             'method'    => 'POST',
@@ -93,6 +95,7 @@ class SkillController
     public function destroy()
     {
         $skillId = Helper::getIdFromUrl('skill');
+        Helper::checkUserIdAgainstLoginId(SkillModel::class, $skillId);
 
         SkillModel::load()->destroy($skillId);
         View::redirect('skill');

@@ -22,6 +22,7 @@ class EducationController
     public function show()
     {
         $educationId = Helper::getIdFromUrl('education');
+        Helper::checkUserIdAgainstLoginId(EducationModel::class, $educationId);
        
         View::render('educations/show.view', [
             'education'     => EducationModel::load()->get($educationId),
@@ -62,6 +63,7 @@ class EducationController
     public function edit()
     {
         $educationId = Helper::getIdFromUrl('education');
+        Helper::checkUserIdAgainstLoginId(EducationModel::class, $educationId);
 
         View::render('educations/edit.view', [
             'method'    => 'POST',
@@ -93,6 +95,7 @@ class EducationController
     public function destroy()
     {
         $educationId = Helper::getIdFromUrl('education');
+        Helper::checkUserIdAgainstLoginId(EducationModel::class, $educationId);
         
         EducationModel::load()->destroy($educationId);
         View::redirect('education');

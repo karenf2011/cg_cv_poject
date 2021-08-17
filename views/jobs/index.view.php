@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.view.php' ?>
 <div class="container-fluid main">
     <h1>Werkervaring van 
-        <?= $_SESSION['user']['full_name'] ?>
+        <?= getNameFromSession() ?>
     </h1>
 
     <?php foreach($vars['jobs'] as $job) :?>

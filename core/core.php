@@ -112,7 +112,10 @@ function isLoggedIn()
  */
 function getNameFromSession()
 {
-    return $_SESSION['user']['first_name'];
+    return isset($_SESSION) && 
+        isset($_SESSION['user']) && 
+        isset($_SESSION['user']['uid']) &&
+        (int)$_SESSION['user']['uid'] > 0 ? $_SESSION['user']['first_name'] : '';
 }
 
  /**
@@ -123,3 +126,37 @@ function getUserIdFromSession()
     return (int)$_SESSION['user']['uid'];
    
 }
+
+function getModels()
+{
+    $models = [];
+
+    $files = scandir($_SERVER['DOCUMENT_ROOT'] . "/app/Models", SCANDIR_SORT_ASCENDING);
+
+    if (isset($_SESSION['models']) && count($files) === count($_SESSION['models'])) {
+        return $_SESSION['models'];
+    }
+
+    foreach ($files as $file)
+    {
+        if ($file == '.' || $file == '..') {
+            continue;
+        }
+
+        $contents = str_replace(' ', '', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/Models/" . $file));
+        $contents = str_replace('"', "'", $contents);
+
+        $pos = stripos($contents, "\$model='");
+
+        if ($pos !== false) {
+            $pos1 = stripos($contents, "'", $pos);
+            if ($pos1 !== false) {
+                $pos2 = stripos($contents, "'", $pos1 + 1);
+
+                $models['App\\Models\\' . str_ireplace('.php', '', $file)] = substr($contents, $pos1 + 1, $pos2 - $pos1 - 1);
+            }
+        }
+    }
+
+    $_SESSION['models'] = $models;
+} 

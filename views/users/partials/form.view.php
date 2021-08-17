@@ -48,7 +48,9 @@
     </form>
     <div class="row mt-4">
         <div class="col">
+            <?php if (isset($vars['user']->id)) : ?>
             <button><a href="/user/<?= $vars['user']->id ?>">Back to overview</a></button>
+            <?php endif ?>
         </div>
     </div>
 </div>

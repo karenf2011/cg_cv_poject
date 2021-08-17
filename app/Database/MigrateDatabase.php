@@ -28,6 +28,8 @@ class MigrateDatabase
         // get files from current directory
         $files = scandir(__DIR__ . "/Migrations/", SCANDIR_SORT_ASCENDING);
         
+        $file = fopen('.migration', 'w');
+
         if (count($files) >= 1)
         {
             foreach ($files as $file)
