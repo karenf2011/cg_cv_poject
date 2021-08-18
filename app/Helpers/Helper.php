@@ -3,12 +3,11 @@
 namespace App\Helpers;
 
 use App\Libraries\View;
+use App\Models\UserModel;
 
 class Helper
 {
-    /**
-     * Check if there's a session, indicating that a user is logged in
-     */
+    // Check if there is a session, indicating that a user is logged in
     public static function isLoggedIn()
     {
         return isset($_SESSION) && 
@@ -17,10 +16,17 @@ class Helper
             (int)$_SESSION['user']['uid'] > 0 ? true : false;
     }
 
+	// Check if there is a session and check if the user is superadmin
+	public static function isLoggedInAsSuperAdmin()
+	{
+		return isset($_SESSION) && 
+			isset($_SESSION['user']) && 
+			isset($_SESSION['user']['role']) &&
+			(int)$_SESSION['user']['role'] === 1 ? true : false;
+	}
 
-    /**
-     * Get the user ID from session from the user that is logged in
-     */
+
+   // Get the user ID from session from the user that is logged in
     public static function getUserIdFromSession()
     {
         if (self::isLoggedIn()) {
@@ -77,13 +83,33 @@ class Helper
 		return $allParams;
     }
 
+	// check if the userId which is connected to the id from the record is the same as the userId from the session
+	// or if the user is a 'super-admin'
 	public static function checkUserIdAgainstLoginId($model, $id)
 	{
 		$data = $model::load()->get($id);
-		
-		if (property_exists($data, 'user_id') && (int)$data->user_id !== self::getUserIdFromSession()) {
+		$userId = (int)$data->user_id;
+		$loginId = self::getUserIdFromSession();
+		$role = UserModel::load()->role($loginId, $returnRoleName = true);
+
+		if (property_exists($data, 'user_id') && $userId !== $loginId && $role !== 'super-admin') {
 			die(View::render('errors/403.view'));
 		}
+	}
+
+
+	// check if the userId from the URL is the same as the userId from the session 
+	// or if the user is a 'super-admin'
+	public static function checkUrlIdAgainstLoginId($id)
+	{
+		$loginId = self::getUserIdFromSession();
+		$role = UserModel::load()->role($loginId, $returnRoleName = true);
+		
+		if ($id !== $loginId && $role !== 'super-admin') {
+            die(View::render('errors/403.view'));
+		} else if ($id === $loginId && $role === 'super-admin') {
+			return 'super-admin';
+		} 
 	}
 
 	/**

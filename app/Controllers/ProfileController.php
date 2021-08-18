@@ -15,6 +15,7 @@ class ProfileController
     public function index()
     {
         $userId = Helper::getIdFromUrl('profile');
+        Helper::checkUrlIdAgainstLoginId($userId);
 
         View::render('profile/index.view', [
             'user'          => UserModel::load()->get($userId),

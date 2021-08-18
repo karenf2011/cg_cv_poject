@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\EducationModel;
+use App\Models\UserModel;
 
 class EducationController
 {
@@ -35,6 +36,7 @@ class EducationController
         View::render('educations/create.view', [
             'method'    => 'POST',
             'action'    => '/education/store',
+            'users'     => UserModel::load()->all(),
         ]);
     }
 
@@ -45,12 +47,14 @@ class EducationController
         if((int)$_POST['end_year'] === 0) {
 	        $_POST['end_year'] = NULL;
         }
-
+        
         // Saves post data in education var
         $education = $_POST;
         
         // Links with a user ID, set created by ID and set created date
-        $education['user_id'] = Helper::getUserIdFromSession();
+        if (!isset($education['user_id'])) {
+            $education['user_id'] = Helper::getUserIdFromSession();
+        }
         $education['created_by'] = Helper::getUserIdFromSession();
         $education['created'] = date('Y-m-d H:i:s');
         
@@ -69,6 +73,7 @@ class EducationController
             'method'    => 'POST',
             'action'    => '/education/' . $educationId . '/update',
             'education' => EducationModel::load()->get($educationId),
+            'users'     => UserModel::load()->all(),
         ]);
     }
 

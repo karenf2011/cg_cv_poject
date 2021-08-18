@@ -87,6 +87,7 @@ class LoginController
     {
         $_SESSION['user'] = [
             'uid'        => (int)$user['id'],
+            'role'       => (int)$user['role'],
             'first_name' => $user['first_name'],
             'insertion'  => $user['insertion'],
             'last_name'  => $user['last_name'],

@@ -1,5 +1,9 @@
 <?php require 'views/layouts/head.view.php' ?>
-    <?php require 'views/partials/header.view.php' ?>
+    <?php if (isLoggedInAsSuperAdmin()) : ?>
+        <?php require 'views/admin/partials/header.view.php' ?>
+    <?php else : ?>
+        <?php require 'views/partials/header.view.php' ?>
+    <?php endif ?>
 
     <div class="overlay">
         <div class="center-box">

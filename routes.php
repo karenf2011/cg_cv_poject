@@ -14,11 +14,6 @@
 use App\Middleware\WhenNotLoggedin;
 use App\Middleware\Permissions;
 
-
-$router->get('admin', 'App/Controllers/AdminController.php@index', [
-    'auth' => WhenNotLoggedin::class,
-]);
-
 $router->get('', 'App/Controllers/HomeController.php@index');
 
 $router->get('login', 'App/Controllers/LoginController.php@index');
@@ -31,16 +26,16 @@ $router->post('register', 'App/Controllers/RegisterController.php@store');
 
 $router->post('login/auth', 'App/Controllers/LoginController.php@login');
 
+$router->get('admin', 'App/Controllers/AdminController.php@index', [
+    'list' => Permissions::class,
+]);
+
 $router->get('profile/{id}', 'App/Controllers/ProfileController.php@index', [
     'auth' => WhenNotLoggedin::class,
 ]);
 
 
 // All the routes concerning users
-
-$router->get('user', 'App/Controllers/UserController.php@list', [
-    'list' => Permissions::class
-]);
 
 $router->get('user/{id}', 'App/Controllers/UserController.php@index', [
     'show' => Permissions::class

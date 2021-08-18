@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\SkillModel;
+use App\Models\UserModel;
 
 class SkillController
 {
@@ -35,6 +36,7 @@ class SkillController
         View::render('skills/create.view', [
             'method'    => 'POST',
             'action'    => '/skill/store',
+            'users'     => UserModel::load()->all(),
         ]);
     }
 
@@ -50,7 +52,9 @@ class SkillController
         $skill = $_POST;
         
         // Links with a user ID, set created by ID and set created date
-        $skill['user_id'] = Helper::getUserIdFromSession();
+        if (!isset($skill['user_id'])) {
+            $skill['user_id'] = Helper::getUserIdFromSession();
+        }
         $skill['created_by'] = Helper::getUserIdFromSession();
         $skill['created'] = date('Y-m-d H:i:s');
         
@@ -69,6 +73,7 @@ class SkillController
             'method'    => 'POST',
             'action'    => '/skill/' . $skillId . '/update',
             'skill'     => SkillModel::load()->get($skillId),
+            'users'     => UserModel::load()->all(),
         ]);
     }
 

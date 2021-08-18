@@ -1,4 +1,8 @@
-<?php require 'views/partials/header.view.php' ?>
+<?php if (isLoggedInAsSuperAdmin()) : ?>
+    <?php require 'views/admin/partials/header.view.php' ?>
+<?php else : ?>
+    <?php require 'views/partials/header.view.php' ?>
+<?php endif ?>
 
 <div class="container-fluid main">
    <div class="card" style="width: 18rem;">

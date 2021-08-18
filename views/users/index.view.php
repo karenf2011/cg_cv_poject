@@ -1,4 +1,8 @@
-<?php require 'views/partials/header.view.php' ?>
+<?php if (isLoggedInAsSuperAdmin()) : ?>
+    <?php require 'views/admin/partials/header.view.php' ?>
+<?php else : ?>
+    <?php require 'views/partials/header.view.php' ?>
+<?php endif ?>
 
 <div class="main container-fluid">
 <h1>Personal info</h1>
@@ -19,9 +23,9 @@
     </p>
 
     <button><a href="/user/<?= $vars['user']->id ?>/edit">Edit</a></button>
-    <button><a href="/user/<?= $vars['user']->id ?>/destroy">Delete</a></button>
-    <br>
-    <button><a href="/user/create">Create new User</a></button>
+    <?php if (isLoggedInAsSuperAdmin()) : ?>
+        <button><a href="/user/<?= $vars['user']->id ?>/destroy">Delete</a></button>
+    <?php endif ?>
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

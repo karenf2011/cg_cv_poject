@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\JobModel;
+use App\Models\UserModel;
 
 class JobController
 {
@@ -38,6 +39,7 @@ class JobController
         View::render('jobs/create.view', [
             'method'    => 'POST',
             'action'    => '/job/store',
+            'users'     => UserModel::load()->all(),
         ]); 
     }
 
@@ -54,7 +56,9 @@ class JobController
         $job = $_POST;
         
         // Links with a user ID, set created by ID and set created date
-        $job['user_id'] = Helper::getUserIdFromSession();
+        if (!isset($job['user_id'])) {
+            $job['user_id'] = Helper::getUserIdFromSession();
+        }
         $job['created_by'] = Helper::getUserIdFromSession();
         $job['created'] = date('Y-m-d H:i:s');
         
@@ -74,6 +78,7 @@ class JobController
             'method'    => 'POST',
             'action'    => '/job/' . $jobId . '/update',
             'job'       => JobModel::load()->get(($jobId)),
+            'users'     => UserModel::load()->all(),
         ]);
     }
 

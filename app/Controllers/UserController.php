@@ -15,10 +15,12 @@ class UserController
     {
         $userId = Helper::getIdFromUrl('user');
 
+        Helper::checkUrlIdAgainstLoginId($userId);
+        
         View::render('users/index.view', [
             'user'   => UserModel::load()->get($userId),
         ]);
-    }
+   }
 
     // Show a form to create a new user
     
@@ -53,6 +55,8 @@ class UserController
     {
         $userId = Helper::getIdFromUrl('user');
 
+        Helper::checkUrlIdAgainstLoginId($userId);
+
         View::render('users/edit.view', [
             'method'    => 'POST',
             'action'    => '/user/' . $userId . '/update',
@@ -81,7 +85,14 @@ class UserController
     public function destroy()
     {
         $userId = Helper::getIdFromUrl('user');
-        Usermodel::load()->destroy($userId);
+        
+        if ((Helper::checkUrlIdAgainstLoginId($userId)) !== 'super-admin') {
+            Usermodel::load()->destroy($userId);
+        } else { 
+            View::render('errors/403.view', [
+                'message' => 'You cannot delete yourself!',
+            ]);
+        }
     }
 
 }
