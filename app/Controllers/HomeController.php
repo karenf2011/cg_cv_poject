@@ -11,7 +11,9 @@ class HomeController {
     {
         $userId = Helper::getUserIdFromSession();
 
-        if (Helper::isLoggedIn()) {
+        if (Helper::isLoggedInAsSuperAdmin()) {
+            View::redirect('admin');
+        } else if (Helper::isLoggedIn()) {
             View::redirect('profile/' . $userId);
         } else {
             View::redirect('login');

@@ -23,10 +23,7 @@ function dd()
     }
 }
 
-
-/**
- * Create an encrypted token and set the token var in the SESSION
- */
+// Create an encrypted token and set the token var in the SESSION
 function createToken()
 {
     $token = bin2hex(openssl_random_pseudo_bytes(16));
@@ -66,9 +63,7 @@ function generateFormTokenHTML()
 }
 
 
-/**
- * Plurarize a string
- */
+// Plurarize a string
 function pluralize($quantity, $singular, $plural=null)
 {
     if ($quantity==1 || !strlen($singular)) return $singular;
@@ -85,9 +80,7 @@ function pluralize($quantity, $singular, $plural=null)
     }
 }
 
-/**
- * All Exceptions go to this function as this has been set in index.php
- */
+// All Exceptions go to this function as this has been set in index.php
 function exception_handler($exception)
 {
     $message = $exception->getMessage();
@@ -95,21 +88,26 @@ function exception_handler($exception)
     require 'views/errors/exceptions.view.php';
 }
 
-/**
- * Check if there's a session, indicating that a user is logged in
- */
+// Check if there is a session, indicating that a user is logged in
 function isLoggedIn()
 {
-    return isset($_SESSION) && 
+   return isset($_SESSION) && 
         isset($_SESSION['user']) && 
         isset($_SESSION['user']['uid']) &&
         (int)$_SESSION['user']['uid'] > 0 ? true : false;
 }
 
+// Check if there is a session and check if the user is superadmin
+function isLoggedInAsSuperAdmin()
+{
+    return isset($_SESSION) && 
+        isset($_SESSION['user']) && 
+        isset($_SESSION['user']['role']) &&
+        (int)$_SESSION['user']['role'] === 1 ? true : false;
+}
 
-/**
- * Get the user ID from session from the user that is logged in
- */
+
+// Get the user name from session from the user that is logged in
 function getNameFromSession()
 {
     return isset($_SESSION) && 
@@ -118,45 +116,9 @@ function getNameFromSession()
         (int)$_SESSION['user']['uid'] > 0 ? $_SESSION['user']['first_name'] : '';
 }
 
- /**
- * Get the user ID from session from the user that is logged in
- */
+ // Get the user ID from session from the user that is logged in
 function getUserIdFromSession()
 {
     return (int)$_SESSION['user']['uid'];
    
 }
-
-function getModels()
-{
-    $models = [];
-
-    $files = scandir($_SERVER['DOCUMENT_ROOT'] . "/app/Models", SCANDIR_SORT_ASCENDING);
-
-    if (isset($_SESSION['models']) && count($files) === count($_SESSION['models'])) {
-        return $_SESSION['models'];
-    }
-
-    foreach ($files as $file)
-    {
-        if ($file == '.' || $file == '..') {
-            continue;
-        }
-
-        $contents = str_replace(' ', '', file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/app/Models/" . $file));
-        $contents = str_replace('"', "'", $contents);
-
-        $pos = stripos($contents, "\$model='");
-
-        if ($pos !== false) {
-            $pos1 = stripos($contents, "'", $pos);
-            if ($pos1 !== false) {
-                $pos2 = stripos($contents, "'", $pos1 + 1);
-
-                $models['App\\Models\\' . str_ireplace('.php', '', $file)] = substr($contents, $pos1 + 1, $pos2 - $pos1 - 1);
-            }
-        }
-    }
-
-    $_SESSION['models'] = $models;
-} 

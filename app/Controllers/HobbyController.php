@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\Helper;
 use App\Libraries\View;
 use App\Models\HobbyModel;
+use App\Models\UserModel;
 
 class HobbyController
 {
@@ -35,6 +36,7 @@ class HobbyController
         View::render('hobbies/create.view', [
             'method'    => 'POST',
             'action'    => '/hobby/store',
+            'users'     => UserModel::load()->all(),
         ]);
     }
 
@@ -50,7 +52,9 @@ class HobbyController
         $hobby = $_POST;
 
         // Links with a user ID, set created by ID and set created date
-        $hobby['user_id'] = Helper::getUserIdFromSession();
+        if (!isset($hobby['user_id'])) {
+            $hobby['user_id'] = Helper::getUserIdFromSession();
+        }
         $hobby['created_by'] = Helper::getUserIdFromSession();
         $hobby['created'] = date('Y-m-d H:i:s');
 
@@ -69,6 +73,7 @@ class HobbyController
             'method'    => 'POST',
             'action'    => '/hobby/' . $hobbyId . '/update',
             'hobby'     => HobbyModel::load()->get($hobbyId),
+            'users'     => UserModel::load()->all(),
         ]);
     }
 
