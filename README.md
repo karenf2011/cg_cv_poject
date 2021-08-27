@@ -1,10 +1,17 @@
-# Basic PHP Framework
+# CG CV Project
+
+This is the second project I made in the bootcamp
+
+I used the framework provided by my tech coach to extend my last project
+
+I used PHP and MySQL and incorporated the CRUD actions
+
+I also created permissions and an admin side, so if you log in as an admin you can do more than a simple user can
 
 ## Installation
 - Go to your terminal
 - composer install
 - npm install
-
 - create a MySQL database and remember username, database name and password to save in .env file
 - save .env.example as .env
 - enter your MySQL credentials in your .env file
@@ -12,10 +19,3 @@
 ## Database Migration
 - go to your project folder in the terminal
 - type: php migrate.php -f -s (-f rewrites all tables, -s seeds the tables)
-
-## What is it?
-A 'tiny' PHP & MySQL framework to build any app or website you want.
-Sure, Laravel or any other PHP framework is better and has more options, but this framework is more like a study project.
-It's a MVC framework which you can extend to what ever you want. Just check the code and see what it can do for you...
-
-Have fun!
